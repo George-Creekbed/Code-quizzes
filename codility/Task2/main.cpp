@@ -73,12 +73,12 @@ int main()
     input0 = "aaaaaabba";
     input1 = {5,4,3,2,1,0,2,2,1};
     sol = solution(input0, input1);
-    cout << "aaaaaabba, [5,4,3,2,1,0,3,2,1]? 12: " << sol << endl;
+    cout << "aaaaaabba, [5,4,3,2,1,0,2,2,1]? 12: " << sol << endl;
 
     input0 = "aaaaaabba";
     input1 = {1,2,3,4,5,0,3,4,4};
     sol = solution(input0, input1);
-    cout << "aaaaaabba, [1,2,3,4,5,0,2,3,4]? 13: " << sol << endl;
+    cout << "aaaaaabba, [1,2,3,4,5,0,3,4,4]? 13: " << sol << endl;
 
     input0 = "aa";
     input1 = {1,1};
