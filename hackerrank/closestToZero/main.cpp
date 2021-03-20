@@ -26,15 +26,15 @@ int closestToZero(int ints[], int size) {
             ret = ints[i];
         else if (!flag_neg && nearest <= ints[i])
             ret = nearest;
-        else if (!flag_neg && nearest > ints[i])
+        else if (!flag_neg && nearest >= ints[i])
             ret = ints[i];
-        cout << ret << endl;
+        //cout << ret << endl;
     }
     return ret;
 }
 
 int main() {
-    int ints[] = {1,-2,5,9,7};
+    int ints[] = {2,-2,5,9,7};
     int sol = closestToZero(ints, 5);
     cout << "Solution is: " << sol << endl;
 
