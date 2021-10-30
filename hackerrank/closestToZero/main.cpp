@@ -13,10 +13,9 @@ int closestToZero(int ints[], int size) {
 
     const int MAX = 2147483647;
     int nearest(MAX);
-    bool flag_neg = false;
     int ret;
     for (int i = 0; i != size; i++) {
-        flag_neg = false;
+        bool flag_neg = false;
         if (ints[i] < 0)
             flag_neg = true;
         nearest = min(nearest, abs(ints[i]));
@@ -26,8 +25,8 @@ int closestToZero(int ints[], int size) {
             ret = ints[i];
         else if (!flag_neg && nearest <= ints[i])
             ret = nearest;
-        else if (!flag_neg && nearest >= ints[i])
-            ret = ints[i];
+        //else if (!flag_neg && nearest >= ints[i])
+        //    ret = ints[i];
         //cout << ret << endl;
     }
     return ret;
