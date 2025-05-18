@@ -1,3 +1,6 @@
+// my own solution using an auxiliary stack is too slow for 2 testcases out of 18
+// found very ingenious alternative solution by someone else
+// using an additional priority queue managing the remove command
 #include <cmath>
 #include <cstdio>
 #include <vector>
@@ -40,3 +43,50 @@ int main() {
     } 
     return 0;
 }
+
+// // 100% working solution (not by me):
+//
+// priority_queue<int, vector<int>, greater<int> > pq;
+// priority_queue<int, vector<int>, greater<int> > pqRemove;
+
+// void add(){
+//     int n;
+//     cin>>n;
+//     pq.push(n);
+// }
+
+// void remove()
+// {
+//     int n;
+//     cin>>n;
+//     pqRemove.push(n);
+    
+// }
+
+// void printMin(){
+    
+//     while(!pqRemove.empty() && pqRemove.top() == pq.top()){
+//         pq.pop();
+//         pqRemove.pop();
+//     }
+//     cout<<pq.top()<<endl;
+// }
+    
+// int main() {
+
+//     int q;
+//     cin>>q;
+//     while(q!=0){
+//         int command;
+//         cin>>command;
+//         if(command == 1)
+//             add();
+//         else if(command == 2)
+//             remove();
+//         else if(command == 3)
+//             printMin();
+        
+//         q--;
+//     }
+//     return 0;
+// }
