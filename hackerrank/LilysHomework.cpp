@@ -1,19 +1,11 @@
 #include <bits/stdc++.h>
-<<<<<<< HEAD
-#include <numeric>
-#include <utility>
-=======
->>>>>>> 93db7f99393b148b58e1b97ad739fbdcda7b4bbc
 
 using namespace std;
 
 string ltrim(const string &);
 string rtrim(const string &);
 vector<string> split(const string &);
-<<<<<<< HEAD
-=======
 
->>>>>>> 93db7f99393b148b58e1b97ad739fbdcda7b4bbc
 /*
  * Complete the 'lilysHomework' function below.
  *
@@ -22,48 +14,42 @@ vector<string> split(const string &);
  */
 
 int lilysHomework(vector<int> arr) {
-<<<<<<< HEAD
-    vector<int> adjacent_diff(arr.size());
-    adjacent_difference(arr.begin(), arr.end(), adjacent_diff.begin());
-    int result{0};
-    for (size_t i=0; i!=adjacent_diff.size(); ++i) {
-        if (adjacent_diff[i] < 0) {
-            auto my_iter = lower_bound(arr.begin(), arr.begin()+i, arr[i]);
-=======
-    /* the smallest sum of adjacent difference is found when the vector
-       is sorted either in increasing or decreasing order */
-    // reverse original input vector in view of second pass below
+    // make a copy of arr for the reverse pass
     vector<int> arr_copy(arr.size());
     reverse_copy(arr.begin(), arr.end(), arr_copy.begin());
+    
     // So, first pass comparison against increasingly sorted vector:   
-    int result{0};
+    int result{};
     vector<int> arr1(arr);
     sort(arr1.begin(), arr1.end());
+    // cout << "direct: " << endl;
     for (size_t i=0; i!=arr.size(); ++i) {
+        // for (auto item : arr)
+        //     cout << item << " ";
+        // cout << endl;
         if (arr[i] != arr1[i]) {
             auto my_iter = find(arr.begin()+i, arr.end(), arr1[i]);
             // "arr.begin()+i" makes the above 'find' less than o(n) 
             // and crucially saves complexity
->>>>>>> 93db7f99393b148b58e1b97ad739fbdcda7b4bbc
             swap(*my_iter, arr[i]);
             ++result;
         }
     }
-<<<<<<< HEAD
-    return result;
-=======
     // second pass is a comparison against decreasingly sorted input vector:
-    int reverse_result{0};
+    int reverse_result{};
+    // cout << "reverse: " << endl;
     for (size_t i=0; i!=arr_copy.size(); ++i) {
-        if (arr_copy[i] != arr1[i]) {
+        // for (auto item : arr_copy)
+        //     cout << item << " ";
+        // cout << endl;
+        if (*(arr_copy.begin()+i) != arr1[i]) {
             auto my_iter = find(arr_copy.begin()+i, arr_copy.end(), arr1[i]);
-            swap(*my_iter, arr_copy[i]);
+            swap(*my_iter, *(arr_copy.begin()+i));
             ++reverse_result;
         }
     }
 
     return min(result, reverse_result);
->>>>>>> 93db7f99393b148b58e1b97ad739fbdcda7b4bbc
 }
 
 int main()
@@ -133,9 +119,5 @@ vector<string> split(const string &str) {
 
     tokens.push_back(str.substr(start));
 
-<<<<<<< HEAD
     return tokens;
 }
-=======
-    return tokens;}
->>>>>>> 93db7f99393b148b58e1b97ad739fbdcda7b4bbc
