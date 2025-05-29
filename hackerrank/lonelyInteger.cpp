@@ -14,14 +14,19 @@ vector<string> split(const string &);
  */
 
 int lonelyinteger(vector<int> a) {
-    map<int, int> counter;
-    for (int i : a)
-        ++counter[i];
+    unordered_map<int, unsigned> count_a;
+    int ret_number{};
+    for (size_t i = 0; i != a.size(); i++) {
+        count_a[ a[i] ]++;
+    }
+    for_each(count_a.begin(), count_a.end(),
+        [&ret_number](const pair<int, unsigned>& a){
+            if (a.second == 1)
+                ret_number = a.first;
+        }
+    );
     
-    return min_element(counter.begin(), counter.end(), 
-               [&](pair<int, int> a, pair<int, int> b) {
-				   return a.second < b.second;})->first;
-               }
+    return ret_number;
 }
 
 int main()

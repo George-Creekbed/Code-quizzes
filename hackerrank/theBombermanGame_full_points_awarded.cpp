@@ -14,6 +14,45 @@ vector<string> split(const string &);
  *  1. INTEGER n
  *  2. STRING_ARRAY grid
  */
+struct Cell {
+    bool is_bomb{}; // 0=no bomb; 1=bomb set, start timer
+    char letter{'.'};
+    int timer{};
+    bool spread_bomb{};
+    bool next_to_explode{};
+    
+    void incrementTimer(){
+        if (is_bomb) {
+            timer++;
+            if (timer % 3 == 0) { // explosion
+                is_bomb = false;
+                next_to_explode = false;
+                letter = '.';
+                spread_bomb = true;
+                timer = 0;
+            } else if (timer % 3 == 2) {
+                next_to_explode = true;
+            }
+        }
+    }
+    
+    void setBomb(){
+        is_bomb = true;
+        letter = 'O';
+    } 
+    
+    void emptyBomb(){
+        if (!next_to_explode) {
+            is_bomb = false;
+            letter = '.';
+            timer = 0;
+        }
+    } 
+    
+    void afterExplosion(){
+        spread_bomb = false;
+    }
+};
 
 vector<string> saveGrid(const vector< vector<Cell> >& cells) {
     size_t rows{cells.size()}, cols{cells[0].size()};

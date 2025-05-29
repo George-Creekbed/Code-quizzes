@@ -14,60 +14,61 @@ string rtrim(const string &);
  * The function accepts STRING s as parameter.
  */
 
-int palindromeIndex(string s) {
-    int end = s.size()-1;
-    int mid = s.size()/2;
-    if (s.size() % 2 == 1)
-        s.erase(mid, 1);
-    int counter(0), ret(-1);
-    map<char, int> map_chars;
-    for (auto c : s)
-        ++map_chars[c];  
-    if (map_chars.size() == 1)
-        return -1;
-    else
-        for (auto pairr : map_chars) {
-            if (pairr.second % 2 == 1)
-                ++counter;
-        }  
-    if (counter == 0 || counter % 2 == 1)
-        return -1;
-    counter = 0;
-    for (int i = 0; i != mid; ++i) {
-        if (s[i] != s[end-i]) {
-            if (map_chars[s[i]] == 1){
-                ret = i;
-            } else if (map_chars[s[end-i]] == 1){
-                ret = end-i;
-            } else if (map_chars[s[i]] % 2== 1){
-                ret = i;
-            } else if (map_chars[s[end-i]] % 2 == 1){
-                ret = end-i; 
-			}
-            counter++;
-        }
-	}
-	return ret;
-}
-//bool isPalindrome(string s){
-     //string r = s;
-     //reverse(r.begin(), r.end());
-     //return s == r;
- //}
+// int palindromeIndex(string s) {
+//     int end = s.size()-1;
+//     int mid = s.size()/2;
+//     if (s.size() % 2 == 1)
+//         s.erase(mid, 1);
+//     int counter(0), ret(-1);
+//     map<char, int> map_chars;
+//     for (auto c : s)
+//         ++map_chars[c];  
+//     if (map_chars.size() == 1)
+//         return -1;
+//     else
+//         for (auto pairr : map_chars) {
+//             if (pairr.second % 2 == 1)
+//                 ++counter;
+//         }  
+//     if (counter == 0 || counter % 2 == 1)
+//         return -1;
+//     counter = 0;
+//     for (int i = 0; i != mid; ++i) {
+//         if (s[i] != s[end-i]) {
+//             if (map_chars[s[i]] == 1){
+//                 ret = i;
+//             } else if (map_chars[s[end-i]] == 1){
+//                 ret = end-i;
+//             } else if (map_chars[s[i]] % 2== 1){
+//                 ret = i;
+//             } else if (map_chars[s[end-i]] % 2 == 1){
+//                 ret = end-i; 
+// 			}
+//             counter++;
+//         }
+// 	}
+// 	return ret;
+// }
 
-//int palindromeIndex(string input) {
-    //int s, e;
-    //for(s = 0, e = input.size() - 1; s < e; s++, e--){
-        //if(input[s] != input[e]) break;
-    //}
-    //if(s >= e) return -1;
-    //string s1 = input, s2 = input;
-    //s1.erase(s1.begin() + s);
-    //if(isPalindrome(s1)) return s;
-    //s2.erase(s2.begin() + e);
-    //if(isPalindrome(s2)) return e;
-    //return -1;
-//}
+bool isPalindrome(string s){
+     string r = s;
+     reverse(r.begin(), r.end());
+     return s == r;
+ }
+
+int palindromeIndex(string input) {
+    int s, e;
+    for(s = 0, e = input.size() - 1; s < e; s++, e--){
+        if(input[s] != input[e]) break;
+    }
+    if(s >= e) return -1;
+    string s1 = input, s2 = input;
+    s1.erase(s1.begin() + s);
+    if(isPalindrome(s1)) return s;
+    s2.erase(s2.begin() + e);
+    if(isPalindrome(s2)) return e;
+    return -1;
+}
 
 int main()
 {
